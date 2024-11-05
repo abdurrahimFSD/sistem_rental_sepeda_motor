@@ -50,20 +50,21 @@
                             </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-                                    <iconify-icon icon="solar:bedside-table-2-line-duotone"></iconify-icon>
-                                    <span class="hide-menu">Menu</span>
+                                    <!-- <iconify-icon icon="solar:bedside-table-2-line-duotone"></iconify-icon> -->
+                                    <iconify-icon icon="material-symbols:motorcycle-outline"></iconify-icon>
+                                    <span class="hide-menu">Sepeda Motor</span>
                                 </a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
                                         <a class="sidebar-link" href="#">
                                             <span class="icon-small"></span>
-                                            <span class="hide-menu">Sub Menu</span>
+                                            <span class="hide-menu">Data Sepeda Motor</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
                                         <a class="sidebar-link" href="#">
                                             <span class="icon-small"></span>
-                                            <span class="hide-menu">Sub Menu</span>
+                                            <span class="hide-menu">Tambah Sepeda Motor</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -71,19 +72,19 @@
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
                                     <iconify-icon icon="solar:users-group-rounded-line-duotone"></iconify-icon>
-                                    <span class="hide-menu">Menu</span>
+                                    <span class="hide-menu">Penyewa</span>
                                 </a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
                                         <a class="sidebar-link" href="#">
                                             <span class="icon-small"></span>
-                                            <span class="hide-menu">Sub Menu</span>
+                                            <span class="hide-menu">Data Penyewa</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a class="sidebar-link" href="#>
+                                        <a class="sidebar-link" href="#">
                                             <span class="icon-small"></span>
-                                            <span class="hide-menu">Sub Menu</span>
+                                            <span class="hide-menu">Tambah Penyewa</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -106,19 +107,19 @@
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow primary-hover-bg" href="javascript:void(0)" aria-expanded="false">
                                     <iconify-icon icon="solar:card-transfer-line-duotone"></iconify-icon>
-                                    <span class="hide-menu">Menu</span>
+                                    <span class="hide-menu">Sewa</span>
                                 </a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
                                         <a href="#" class="sidebar-link">
                                             <span class="icon-small"></span>
-                                            <span class="hide-menu">Sub Menu</span>
+                                            <span class="hide-menu">Data Sewa</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
                                         <a href="#" class="sidebar-link">
                                             <span class="icon-small"></span>
-                                            <span class="hide-menu">Sub Menu</span>
+                                            <span class="hide-menu">Tambah Sewa</span>
                                         </a>
                                     </li>
                                 </ul>
