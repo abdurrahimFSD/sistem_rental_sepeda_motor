@@ -50,19 +50,18 @@
                             </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link has-arrow" href="#" aria-expanded="false">
-                                    <!-- <iconify-icon icon="solar:bedside-table-2-line-duotone"></iconify-icon> -->
                                     <iconify-icon icon="material-symbols:motorcycle-outline"></iconify-icon>
                                     <span class="hide-menu">Sepeda Motor</span>
                                 </a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-                                        <a class="sidebar-link" href="#">
+                                        <a class="sidebar-link" href="?page=sepedaMotorData">
                                             <span class="icon-small"></span>
                                             <span class="hide-menu">Data Sepeda Motor</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a class="sidebar-link" href="#">
+                                        <a class="sidebar-link" href="?page=sepedaMotorCreate">
                                             <span class="icon-small"></span>
                                             <span class="hide-menu">Tambah Sepeda Motor</span>
                                         </a>
@@ -76,13 +75,13 @@
                                 </a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-                                        <a class="sidebar-link" href="#">
+                                        <a class="sidebar-link" href="?page=penyewaData">
                                             <span class="icon-small"></span>
                                             <span class="hide-menu">Data Penyewa</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a class="sidebar-link" href="#">
+                                        <a class="sidebar-link" href="?page=penyewaCreate">
                                             <span class="icon-small"></span>
                                             <span class="hide-menu">Tambah Penyewa</span>
                                         </a>
@@ -111,13 +110,13 @@
                                 </a>
                                 <ul aria-expanded="false" class="collapse first-level">
                                     <li class="sidebar-item">
-                                        <a href="#" class="sidebar-link">
+                                        <a href="?page=sewaData" class="sidebar-link">
                                             <span class="icon-small"></span>
                                             <span class="hide-menu">Data Sewa</span>
                                         </a>
                                     </li>
                                     <li class="sidebar-item">
-                                        <a href="#" class="sidebar-link">
+                                        <a href="?page=sewaCreate" class="sidebar-link">
                                             <span class="icon-small"></span>
                                             <span class="hide-menu">Tambah Sewa</span>
                                         </a>
