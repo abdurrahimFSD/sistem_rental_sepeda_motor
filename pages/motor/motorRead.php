@@ -1,3 +1,11 @@
+<?php
+include('./controllers/function.php');
+
+$no = 1;
+// Memanggil function fetchData dengan argumen motor
+$motorData = fetchData('motor');
+?>
+
 <!-- Start Body Wrapper -->
 <div class="body-wrapper">
     <div class="container-fluid">
@@ -46,32 +54,34 @@
                             <th class="text-center">Aksi</th>
                         </thead>
                         <tbody>
+                            <?php foreach($motorData as $row) { ?>
                             <!-- start row -->
                             <tr class="search-items">
                                 <td class="text-dark">
-                                    1
+                                    <?= $no++; ?>
                                 </td>
                                 <td class="text-dark">
-                                    DA1234BA
+                                    <?= $row['no_polisi']; ?>
                                 </td>
                                 <td class="text-dark">
-                                    Yamaha
+                                    <?= $row['merk']; ?>
                                 </td>
                                 <td class="text-dark">
-                                    Matic
+                                    <?= $row['kategori']; ?>
                                 </td>
                                 <td class="text-center">
                                     <div class="action-btn">
-                                        <a href="#" class="d-inline-flex btn btn-sm btn-outline-warning edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                        <a href="?page=sepedaMotorUpdate&id_motor=<?= $row['id_motor']; ?>" class="d-inline-flex btn btn-sm btn-outline-warning edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                                             <iconify-icon icon="tabler:edit" class="fs-5"></iconify-icon>
                                         </a>
-                                        <a href="#" id="deleteButtonSepedaMotor" class="d-inline-flex btn btn-sm btn-outline-danger delete ms-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
+                                        <a href="#" id="deleteButtonSepedaMotor" onclick="confirmDelete('<?= $row['id_motor']; ?>')" class="d-inline-flex btn btn-sm btn-outline-danger delete ms-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <iconify-icon icon="tabler:trash" class="fs-5"></iconify-icon>
                                         </a>
                                     </div>
                                 </td>
                             </tr>
                             <!-- end row -->
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
