@@ -17,7 +17,7 @@
                                 </li>
                                     <iconify-icon icon="ic:sharp-keyboard-arrow-right" class="mx-1" width="26" height="26"></iconify-icon>
                                 <li class="breadcrumb-item my-auto" aria-current="page">
-                                    <span class="badge fw-medium fs-2 bg-primary-subtle text-primary"> Data Sepeda Motor </span>
+                                    <span class="badge fw-medium fs-2 bg-primary-subtle text-primary-emphasis"> Data Sepeda Motor </span>
                                 </li>
                             </ol>
                         </nav>
