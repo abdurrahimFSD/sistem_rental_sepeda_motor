@@ -40,7 +40,7 @@ $motorData = fetchData('motor');
             <!-- Start Card body main content -->
             <div class="card card-body">
                 <div class="d-flex justify-content-end mb-9">
-                    <a href="?page=sepdaMotorCreate" class="btn btn-primary d-flex align-items-center">
+                    <a href="?page=sepedaMotorCreate" class="btn btn-primary d-flex align-items-center">
                         <iconify-icon icon="fluent:add-24-filled" class="text-white me-1 fs-5 d-inline-flex align-items-center"></iconify-icon> Tambah Data
                     </a>
                 </div>
