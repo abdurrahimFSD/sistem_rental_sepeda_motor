@@ -29,4 +29,34 @@ function fetchData($tableName) {
     // Mengembalikan array $data yg berisi semua baris data dari table
     return $data;
 }
+
+// Function motorCreate untuk menambahkan data sepeda motor baru
+function motorCreate($data) {
+    global $connection;
+
+    // Ambil data motor dari array $data
+    $noPolisi = $data['noPolisi'];
+    $merk = $data['merk'];
+    $kategori = $data['kategori'];
+
+    // Mengecek apakah no polisi sudah ada
+    $queryCekNoPolisi = "SELECT * FROM motor WHERE no_polisi = '$noPolisi'";
+    $resultCekNoPolisi = mysqli_query($connection, $queryCekNoPolisi);
+    if (mysqli_num_rows($resultCekNoPolisi) > 0) {
+        // Jika no polisi sudah ada, kembalikan pesan error
+        $existingNoPolisi = mysqli_fetch_assoc($resultCekNoPolisi);
+        return $existingNoPolisi['no_polisi'];
+    } else {
+        // Jika no polisi belum ada, simpan data motor ke database
+        $queryCreateMotor = "INSERT INTO motor (no_polisi, merk, kategori) VALUES ('$noPolisi', '$merk', '$kategori')";
+        $resultCreateMotor = mysqli_query($connection, $queryCreateMotor);
+
+        // Kembalikan pesan sukses
+        if ($resultCreateMotor) {
+            return 'success';
+        } else {
+            return 'error';
+        }
+    }
+}
 ?>
