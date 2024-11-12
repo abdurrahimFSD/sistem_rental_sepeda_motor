@@ -46,7 +46,7 @@
                         <label for="kategori" class="form-label">kategori</label>
                         <?php
                             include('./config/connection.php');
-                            $kategori = ['Matic', 'No Matic'];
+                            $kategori = ['Matic', 'Non Matic'];
                         ?>
                         <select name="kategori" id="kategori" class="form-select" required>
                             <option selected disabled>Pilih kategori</option>
