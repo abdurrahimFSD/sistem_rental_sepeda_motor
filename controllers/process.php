@@ -12,9 +12,11 @@ if (isset($_POST['simpan'])) {
 
         // Jika proses berhasil
         if ($result == 'success') {
-            return 'successMotorCreate';
-        } else {
-            return 'errorMotorCreate';
+            echo 'successMotorCreate';
+        } elseif ($result == 'error') {
+            echo 'errorMotorCreate';
+        } elseif (is_string($result)) {
+            echo 'duplicateNoPolisi:' . $result;
         }
     }
 }
