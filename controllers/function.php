@@ -59,4 +59,35 @@ function motorCreate($data) {
         }
     }
 }
+
+// Function motorUpdate untuk mengupdate data sepeda motor
+function motorUpdate($data) {
+    global $connection;
+
+    // Ambil data motor dari array $data    
+    $idMotor = $data['idMotor'];
+    $noPolisi = $data['noPolisi'];
+    $merk = $data['merk'];
+    $kategori = $data['kategori'];
+
+    // Mengecek apakah no polisi sudah ada
+    $queryCekNoPolisi = "SELECT * FROM motor WHERE no_polisi = '$noPolisi'";
+    $resultCekNoPolisi = mysqli_query($connection, $queryCekNoPolisi);
+    if (mysqli_num_rows($resultCekNoPolisi) > 0) {
+        // Jika no polisi sudah ada, kembalikan pesan error        
+        $existingNoPolisi = mysqli_fetch_assoc($resultCekNoPolisi);
+        return $existingNoPolisi['no_polisi'];
+    } else {
+        // Jika no polisi belum ada, simpan data motor ke database
+        $queryUpdateMotor = "UPDATE motor SET no_polisi = '$noPolisi', merk = '$merk', kategori = '$kategori' WHERE id_motor = '$idMotor'";
+        $resultUpdateMotor = mysqli_query($connection, $queryUpdateMotor);
+
+        // Kembalikan pesan sukses
+        if ($resultUpdateMotor) {
+            return 'success';
+        } else {
+            return 'error';
+        }
+    }
+}
 ?>
