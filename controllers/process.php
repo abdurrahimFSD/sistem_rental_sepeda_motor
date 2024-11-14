@@ -18,6 +18,18 @@ if (isset($_POST['simpan'])) {
         } elseif (is_string($result)) {
             echo 'duplicateNoPolisi:' . $result;
         }
+    } elseif ($_POST['simpan'] == 'sepedaMotorUpdate') {
+        // Memanggil function motorUpdate
+        $result = motorUpdate($_POST);
+
+        // Jika proses berhasil
+        if ($result == 'success') {
+            echo 'successMotorUpdate';
+        } elseif ($result == 'error') {
+            echo 'errorMotorUpdate';
+        } elseif (is_string($result)) {
+            echo 'duplicateNoPolisi:' . $result;
+        }
     }
 }
 ?>
