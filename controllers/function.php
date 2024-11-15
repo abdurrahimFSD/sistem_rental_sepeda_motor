@@ -71,7 +71,7 @@ function motorUpdate($data) {
     $kategori = $data['kategori'];
 
     // Mengecek apakah no polisi sudah ada
-    $queryCekNoPolisi = "SELECT * FROM motor WHERE no_polisi = '$noPolisi'";
+    $queryCekNoPolisi = "SELECT * FROM motor WHERE no_polisi = '$noPolisi' AND id_motor != '$idMotor'";
     $resultCekNoPolisi = mysqli_query($connection, $queryCekNoPolisi);
     if (mysqli_num_rows($resultCekNoPolisi) > 0) {
         // Jika no polisi sudah ada, kembalikan pesan error        
