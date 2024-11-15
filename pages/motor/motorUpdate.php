@@ -75,7 +75,7 @@ if (isset($_GET['id_motor'])) {
                     <a href="?page=sepedaMotorData" class="d-inline-flex justify-content-center align-items-center btn btn-outline-muted me-2">
                         <iconify-icon icon="fluent:arrow-left-24-filled" class="me-1 fs-5 d-inline-flex align-items-center"></iconify-icon>Kembali
                     </a>
-                    <input type="hidden" name="simpan" value="sepedaMotorCreate">
+                    <input type="hidden" name="simpan" value="sepedaMotorUpdate">
                     <button type="submit" class="d-inline-flex justify-content-center align-items-center btn btn-primary">
                         <iconify-icon icon="fluent:save-24-regular" class="me-1 fs-5 d-inline-flex align-items-center"></iconify-icon>Simpan
                     </button>
