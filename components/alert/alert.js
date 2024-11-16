@@ -94,3 +94,36 @@ if (document.getElementById('sepedaMotorUpdateForm')) {
         })
     })
 }
+
+// Kode alert untuk operasi hapus data sepeda motor
+if (document.getElementById('deleteButtonSepedaMotor')) {
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Hapus',
+            text: 'Apakah anda yakin menghapus data ini',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, hapus",
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`./controllers/process.php?id_motor=${id}`)
+                .then(response => response.text())
+                .then(response => {
+                    if (response === 'successMotorDelete') {
+                        Swal.fire('Dihapus', 'Data motor berhasil dihapus', 'success').then(() => {
+                            window.location.reload();   // Refresh halaman untuk memperbarui tampilan
+                        })
+                    } else if (response === 'errorMotorDelete') {
+                        Swal.fire('Gagal', 'Data motor gagal dihapus', 'error');
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Gagal', 'Terjadi kesalahan', 'error');
+                }); 
+            }
+        })
+    }
+}
