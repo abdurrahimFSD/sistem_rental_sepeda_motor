@@ -46,4 +46,51 @@ if (document.getElementById('sepedaMotorCreateForm')) {
             });
         }) 
     })
+};
+
+
+// Kode alert untuk operasi edit data sepeda motor
+if (document.getElementById('sepedaMotorUpdateForm')) {
+    document.getElementById('sepedaMotorUpdateForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: 'Apakah anda ingin menyimpan perubahan ini?',
+            showCancelButton: true,
+            confirmButtonText: 'Simpan',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.getElementById('sepedaMotorUpdateForm');
+                const formData = new FormData(form);
+
+                fetch('./controllers/process.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(response => {
+                    if (response === 'successMotorUpdate') {
+                        Swal.fire('Tersimpan', '', 'success').then(() => {
+                            window.location.href = './index.php?page=sepedaMotorData';
+                        });
+                    } else if (response === 'errorMotorUpdate') {
+                        Swal.fire('Gagal', '', 'error');
+                    } else if (response.startsWith('duplicateNoPolisi:')) {
+                        const existingNoPolisi = response.split(':')[1];
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: `No Polisi ${existingNoPolisi} sudah ada, tidak boleh sama`,
+                            icon: 'warning',
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Gagal', 'Terjadi kesalahan saat menyimpan perubahan', 'error');
+                }) 
+            } else if (result.isDismissed) {
+                Swal.fire('Perubahan dibatalkan', '', 'info');
+            }
+        })
+    })
 }
