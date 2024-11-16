@@ -90,4 +90,18 @@ function motorUpdate($data) {
         }
     }
 }
+
+// Function motorDelete untuk menghapus data sepeda motor
+function motorDelete($idMotor) {
+    global $connection;
+
+    $queryDeleteMotor = "DELETE FROM motor WHERE id_motor = '$idMotor'";
+    $resultDeleteMotor = mysqli_query($connection, $queryDeleteMotor);
+
+    if ($resultDeleteMotor) {
+        return 'success';
+    } else {
+        return 'error';
+    }
+}
 ?>
