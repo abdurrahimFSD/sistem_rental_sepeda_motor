@@ -104,4 +104,34 @@ function motorDelete($idMotor) {
         return 'error';
     }
 }
+
+// Function penyewaCreate untuk menambahkan data penyewa baru
+function penyewaCreate($data) {
+    global $connection;
+
+    // Ambil data penyewa dari array $data
+    $nama = $data['nama'];
+    $noTelepon = $data['noTelepon'];
+    $alamat = $data['alamat'];
+
+    // Mengecek apakah no telepon sudah ada
+    $queryCekNoTelepon = "SELECT * FROM penyewa WHERE no_telepon = '$noTelepon'";
+    $resultCekNoTelepon = mysqli_query($connection, $queryCekNoTelepon);
+    if (mysqli_num_rows($resultCekNoTelepon) > 0) {
+        // Jika no telepon sudah ada, kembalikan pesan error
+        $existingNoTelepon = mysqli_fetch_assoc($resultCekNoTelepon);
+        return $existingNoTelepon['no_telepon'];
+    } else {
+        // Jika no telepon belum ada, simpan data penyewa ke database
+        $queryCreatePenyewa = "INSERT INTO penyewa (nama, no_telepon, alamat) VALUES ('$nama', '$noTelepon', '$alamat')";
+        $resultCreatePenyewa = mysqli_query($connection, $queryCreatePenyewa);
+
+        // Kembalikan pesan sukses
+        if ($resultCreatePenyewa) {
+            return 'success';
+        } else {
+            return 'error';
+        }
+    }
+}
 ?>
