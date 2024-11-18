@@ -111,7 +111,7 @@ function penyewaCreate($data) {
 
     // Ambil data penyewa dari array $data
     $nama = $data['nama'];
-    $noTelepon = $data['noTelepon'];
+    $nomorTelepon = $data['nomorTelepon'];
     $alamat = $data['alamat'];
 
     // Mengecek apakah no telepon sudah ada
