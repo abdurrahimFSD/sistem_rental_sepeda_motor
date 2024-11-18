@@ -115,7 +115,7 @@ function penyewaCreate($data) {
     $alamat = $data['alamat'];
 
     // Mengecek apakah no telepon sudah ada
-    $queryCekNoTelepon = "SELECT * FROM penyewa WHERE no_telepon = '$noTelepon'";
+    $queryCekNoTelepon = "SELECT * FROM penyewa WHERE no_telepon = '$nomorTelepon'";
     $resultCekNoTelepon = mysqli_query($connection, $queryCekNoTelepon);
     if (mysqli_num_rows($resultCekNoTelepon) > 0) {
         // Jika no telepon sudah ada, kembalikan pesan error
