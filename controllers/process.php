@@ -30,6 +30,18 @@ if (isset($_POST['simpan'])) {
         } elseif (is_string($result)) {
             echo 'duplicateNoPolisi:' . $result;
         }
+    } elseif ($_POST['simpan'] == 'penyewaCreate') {
+        // Memanggil function penyewaCreate
+        $result = penyewaCreate($_POST);
+
+        // Jika proses berhasil
+        if ($result == 'success') {
+            echo 'successPenyewaCreate';
+        } elseif ($result == 'error') {
+            echo 'errorPenyewaCreate';
+        } elseif (is_string($result)) {
+            echo 'duplicateNoTelepon:' . $result;
+        }
     }
 }
 
