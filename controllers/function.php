@@ -123,7 +123,7 @@ function penyewaCreate($data) {
         return $existingNoTelepon['no_telepon'];
     } else {
         // Jika no telepon belum ada, simpan data penyewa ke database
-        $queryCreatePenyewa = "INSERT INTO penyewa (nama, no_telepon, alamat) VALUES ('$namaPenyewa', '$nomorTelepon', '$alamat')";
+        $queryCreatePenyewa = "INSERT INTO penyewa (nama_penyewa, no_telepon, alamat) VALUES ('$namaPenyewa', '$nomorTelepon', '$alamat')";
         $resultCreatePenyewa = mysqli_query($connection, $queryCreatePenyewa);
 
         // Kembalikan pesan sukses
