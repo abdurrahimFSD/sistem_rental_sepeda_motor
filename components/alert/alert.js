@@ -6,7 +6,6 @@ if (document.getElementById('sepedaMotorCreateForm')) {
 
         const form = document.getElementById('sepedaMotorCreateForm');
         const formData = new FormData(form);
-        console.log(formData);
 
         // Mengirim form melalui AJAX
         fetch('./controllers/process.php', {
@@ -46,8 +45,53 @@ if (document.getElementById('sepedaMotorCreateForm')) {
             });
         }) 
     })
-};
+} else if(document.getElementById('penyewaCreateForm')) {
+    document.getElementById('penyewaCreateForm').addEventListener('submit', function(event) {
+        // Mencegah form submit secara default (refresh halaman) atau Mencegah form dari submit secara langsung
+        event.preventDefault();
 
+        const form = document.getElementById('penyewaCreateForm');
+        const formData = new FormData(form);
+
+        // Mengirim form melalui AJAX
+        fetch('./controllers/process.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(response => {
+            if (response == 'successPenyewaCreate') {
+                Swal.fire({
+                    title: 'Berhasil',
+                    text: 'Data penyewa baru berhasil ditambahkan',
+                    icon: 'success',
+                }).then(() => {
+                    window.location.href = './index.php?page=penyewaData';
+                });
+            } else if (response == 'errorPenyewaCreate') {
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'Data penyewa baru gagal ditambahkan',
+                    icon: 'error',
+                });
+            } else if (response.startsWith('duplicateNoTelepon:')) {
+                const existingNoTelepon = response.split(':')[1];
+                Swal.fire({
+                    title: 'Gagal',
+                    text: `No telepon ${existingNoTelepon} sudah ada`,
+                    icon: 'warning',
+                });
+            }
+        })
+        .catch(error => {
+            Swal.fire({
+                title: 'Gagal',
+                text: 'Terjadi kesalahan saat menambahkan data penyewa',
+                icon: 'error',
+            });
+        })
+    })
+}   
 
 // Kode alert untuk operasi edit data sepeda motor
 if (document.getElementById('sepedaMotorUpdateForm')) {
