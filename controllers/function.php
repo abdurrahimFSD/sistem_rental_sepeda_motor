@@ -164,4 +164,5 @@ function penyewaUpdate($data) {
             return 'error';
         }
     }
+}
 ?>
