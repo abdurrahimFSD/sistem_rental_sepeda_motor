@@ -134,4 +134,34 @@ function penyewaCreate($data) {
         }
     }
 }
+
+// Function penyewaUpdate untuk mengupdate data penyewa
+function penyewaUpdate($data) {
+    global $connection;    
+
+    // Ambil data penyewa dari array $data
+    $idPenyewa = $data['idPenyewa'];
+    $namaPenyewa = $data['namaPenyewa'];
+    $nomorTelepon = $data['nomorTelepon'];
+    $alamat = $data['alamat'];
+
+    // Mengecek apakah no telepon sudah ada
+    $queryCekNoTelepon = "SELECT * FROM penyewa WHERE no_telepon = '$nomorTelepon' AND id_penyewa != '$idPenyewa'";
+    $resultCekNoTelepon = mysqli_query($connection, $queryCekNoTelepon);
+    if (mysqli_num_rows($resultCekNoTelepon) > 0) {
+        // Jika no telepon sudah ada, kembalikan pesan error        
+        $existingNoTelepon = mysqli_fetch_assoc($resultCekNoTelepon);
+        return $existingNoTelepon['no_telepon'];
+    } else {
+        // Jika no telepon belum ada, simpan data penyewa ke database
+        $queryUpdatePenyewa = "UPDATE penyewa SET nama_penyewa = '$namaPenyewa', no_telepon = '$nomorTelepon', alamat = '$alamat' WHERE id_penyewa = '$idPenyewa'";
+        $resultUpdatePenyewa = mysqli_query($connection, $queryUpdatePenyewa);
+
+        // Kembalikan pesan sukses
+        if ($resultUpdatePenyewa) {
+            return 'success';
+        } else {
+            return 'error';
+        }
+    }
 ?>
