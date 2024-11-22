@@ -137,6 +137,49 @@ if (document.getElementById('sepedaMotorUpdateForm')) {
             }
         })
     })
+} else if (document.getElementById('penyewaUpdateForm')) {
+    document.getElementById('penyewaUpdateForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: 'Apakah anda ingin menyimpan perubahan ini?',
+            showCancelButton: true,
+            confirmButtonText: 'Simpan',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.getElementById('penyewaUpdateForm');
+                const formData = new FormData(form);
+
+                fetch('./controllers/process.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(response => {
+                    if (response === 'successPenyewaUpdate') {
+                        Swal.fire('Tersimpan', '', 'success').then(() => {
+                            window.location.href = './index.php?page=penyewaData';
+                        });
+                    } else if (response === 'errorPenyewaUpdate') {
+                        Swal.fire('Gagal', '', 'error');
+                    } else if (response.startsWith('duplicateNoTelepon:')) {
+                        const existingNoTelepon = response.split(':')[1];
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: `No Telepon ${existingNoTelepon} sudah ada, tidak boleh sama`,
+                            icon: 'warning',
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Gagal', 'Terjadi kesalahan saat menyimpan perubahan', 'error');
+                }) 
+            } else if (result.isDismissed) {
+                Swal.fire('Perubahan dibatalkan', '', 'info');
+            }
+        })
+    })
 }
 
 // Kode alert untuk operasi hapus data sepeda motor
