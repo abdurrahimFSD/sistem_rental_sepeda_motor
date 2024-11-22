@@ -42,6 +42,18 @@ if (isset($_POST['simpan'])) {
         } elseif (is_string($result)) {
             echo 'duplicateNoTelepon:' . $result;
         }
+    } elseif ($_POST['simpan'] == 'penyewaUpdate') {
+        // Memanggil function penyewaUpdate
+        $result = penyewaUpdate($_POST);
+
+        // Jika proses berhasil
+        if ($result == 'success') {
+            echo 'successPenyewaUpdate';
+        } elseif ($result == 'error') {
+            echo 'errorPenyewaUpdate';
+        } elseif (is_string($result)) {
+            echo 'duplicateNoTelepon:' . $result;
+        }
     }
 }
 
