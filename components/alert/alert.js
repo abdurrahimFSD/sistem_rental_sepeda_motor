@@ -93,7 +93,7 @@ if (document.getElementById('sepedaMotorCreateForm')) {
     })
 }   
 
-// Kode alert untuk operasi edit data sepeda motor
+// Kode alert untuk operasi edit data 
 if (document.getElementById('sepedaMotorUpdateForm')) {
     document.getElementById('sepedaMotorUpdateForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -182,7 +182,7 @@ if (document.getElementById('sepedaMotorUpdateForm')) {
     })
 }
 
-// Kode alert untuk operasi hapus data sepeda motor
+// Kode alert untuk operasi hapus data 
 if (document.getElementById('deleteButtonSepedaMotor')) {
     function confirmDelete(id) {
         Swal.fire({
@@ -205,6 +205,36 @@ if (document.getElementById('deleteButtonSepedaMotor')) {
                         })
                     } else if (response === 'errorMotorDelete') {
                         Swal.fire('Gagal', 'Data motor gagal dihapus', 'error');
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Gagal', 'Terjadi kesalahan', 'error');
+                }); 
+            }
+        })
+    }
+}else if (document.getElementById('deleteButtonPenyewa')) {
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Hapus',
+            text: 'Apakah anda yakin menghapus data ini',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, hapus",
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`./controllers/process.php?id_penyewa=${id}`)
+                .then(response => response.text())
+                .then(response => {
+                    if (response === 'successPenyewaDelete') {
+                        Swal.fire('Dihapus', 'Data penyewa berhasil dihapus', 'success').then(() => {
+                            window.location.reload();   // Refresh halaman untuk memperbarui tampilan
+                        })
+                    } else if (response === 'errorPenyewaDelete') {
+                        Swal.fire('Gagal', 'Data penyewa gagal dihapus', 'error');
                     }
                 })
                 .catch(error => {
