@@ -68,5 +68,15 @@ if (isset($_GET['id_motor'])) {
     } elseif ($result == 'error') {
         echo 'errorMotorDelete';
     }
+} elseif (isset($_GET['id_penyewa'])) {
+    // Memanggil function penyewaDelete
+    $result = penyewaDelete($_GET['id_penyewa']);
+
+    // Jika proses berhasil
+    if ($result == 'success') {
+        echo 'successPenyewaDelete';
+    } elseif ($result == 'error') {
+        echo 'errorPenyewaDelete';
+    }
 }
 ?>
