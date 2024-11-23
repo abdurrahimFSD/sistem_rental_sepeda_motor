@@ -165,4 +165,18 @@ function penyewaUpdate($data) {
         }
     }
 }
+
+// Function penyewaDelete untuk menghapus data penyewa
+function penyewaDelete($idPenyewa) {
+    global $connection;
+
+    $queryDeletePenyewa = "DELETE FROM penyewa WHERE id_penyewa = '$idPenyewa'";
+    $resultDeletePenyewa = mysqli_query($connection, $queryDeletePenyewa);
+
+    if ($resultDeletePenyewa) {
+        return 'success';
+    } else {
+        return 'error';
+    }
+}
 ?>
