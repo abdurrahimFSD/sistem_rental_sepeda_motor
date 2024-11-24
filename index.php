@@ -38,6 +38,9 @@ switch ($_GET['page']) {
     case 'sewaUpdate':
         include ('./pages/sewa/sewaUpdate.php');
         break;
+    case 'sewaDetail':
+        include ('./pages/sewa/sewaDetail.php');
+        break;
     
     default:
         include ('./home.php');
