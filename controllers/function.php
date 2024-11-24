@@ -179,4 +179,21 @@ function penyewaDelete($idPenyewa) {
         return 'error';
     }
 }
+
+// Function getSewaData untuk mengambil data sewa berdasarkan id penyewa
+function getSewaData($connection) {
+    $query = "SELECT
+              sewa.id_sewa,
+              sewa.tanggal_sewa,
+              sewa.nama_karyawan,
+              sewa.lama_sewa,
+              sewa.harga_sewa,
+              motor.merk,
+              penyewa.nama_penyewa
+              FROM sewa
+              JOIN motor ON sewa.motor_id = motor.id_motor
+              JOIN penyewa ON sewa.penyewa_id = penyewa.id_penyewa";
+              
+    return mysqli_query($connection, $query);
+}
 ?>
