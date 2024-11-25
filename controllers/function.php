@@ -208,4 +208,27 @@ function getPenyewaData($connection) {
     $query = "SELECT id_penyewa, nama_penyewa FROM penyewa";
     return mysqli_query($connection, $query);
 }
+
+// Function sewaCreate untuk membuat data sewa
+function sewaCreate($data) {
+    global $connection;
+
+    // Mengambil data sewa dari array $data
+    $tanggalSewa = $data['tanggalSewa'];
+    $merkMotor = $data['merkMotor'];
+    $namaPenyewa = $data['namaPenyewa'];
+    $namaKaryawan = $data['namaKaryawan'];
+    $lamaSewa = $data['lamaSewa'];
+    $hargaSewa = $data['hargaSewa'];
+
+    // Menyimpan data sewa ke database
+    $queryCreateSewa = "INSERT INTO sewa (tanggal_sewa, motor_id, penyewa_id, nama_karyawan, lama_sewa, harga_sewa) VALUES ('$tanggalSewa', '$merkMotor', '$namaPenyewa', '$namaKaryawan', '$lamaSewa', '$hargaSewa')";
+    $resultCreateSewa = mysqli_query($connection, $queryCreateSewa);
+
+    if ($resultCreateSewa) {
+        return 'success';
+    } else {
+        return 'error';
+    }
+}
 ?>
