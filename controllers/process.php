@@ -54,7 +54,17 @@ if (isset($_POST['simpan'])) {
         } elseif (is_string($result)) {
             echo 'duplicateNoTelepon:' . $result;
         }
-    }
+    } elseif ($_POST['simpan'] == 'sewaCreate') {
+        // Memanggil function sewaCreate
+        $result = sewaCreate($_POST);
+
+        // Jika proses berhasil
+        if ($result == 'success') {
+            echo 'successSewaCreate';
+        } elseif ($result == 'error') {
+            echo 'errorSewaCreate';
+        }
+    }    
 }
 
 // Mengecek apakah parameter 'id_motor' ada di URL
