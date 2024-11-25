@@ -196,4 +196,16 @@ function getSewaData($connection) {
               
     return mysqli_query($connection, $query);
 }
+
+// Function getMotorData untuk mengambil data sepeda motor
+function getMotorData($connection) {
+    $query = "SELECT id_motor, merk FROM motor";
+    return mysqli_query($connection, $query);
+}
+
+// Function getPenyewaData untuk mengambil data penyewa
+function getPenyewaData($connection) {
+    $query = "SELECT id_penyewa, nama_penyewa FROM penyewa";
+    return mysqli_query($connection, $query);
+}
 ?>
