@@ -1,13 +1,11 @@
 <?php
-include('./config/connection.php');
+include('./controllers/function.php');
 
-// Ambil data motor dari table motor
-$queryMotor = "SELECT id_motor, merk FROM motor";
-$resultMotor = mysqli_query($connection, $queryMotor);
+// Ambil data motor dari function
+$resultMotor = getMotorData($connection);
 
-// Ambil data penyewa dari table penyewa
-$queryPenyewa = "SELECT id_penyewa, nama_penyewa FROM penyewa";
-$resultPenyewa = mysqli_query($connection, $queryPenyewa);
+// Ambil data penyewa dari function
+$resultPenyewa = getPenyewaData($connection);
 ?>
 
 <!-- Start Body Wrapper -->
