@@ -91,7 +91,46 @@ if (document.getElementById('sepedaMotorCreateForm')) {
             });
         })
     })
-}   
+} else if(document.getElementById('sewaCreateForm')) {
+    document.getElementById('sewaCreateForm').addEventListener('submit', function(event) {
+        // Mencegah form submit secara default (refresh halaman) atau Mencegah form dari submit secara langsung
+        event.preventDefault();
+
+        const form = document.getElementById('sewaCreateForm');
+        const formData = new FormData(form);
+
+        // Mengirim form melalui AJAX
+        fetch('./controllers/process.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(response => {
+            if (response == 'successSewaCreate') {
+                Swal.fire({
+                    title: 'Berhasil',
+                    text: 'Data sewa baru berhasil ditambahkan',
+                    icon: 'success',
+                }).then(() => {
+                    window.location.href = './index.php?page=sewaData';
+                });
+            } else if (response == 'errorSewaCreate') {
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'Data sewa baru gagal ditambahkan',
+                    icon: 'error',
+                });
+            }
+        })
+        .catch(error => {
+            Swal.fire({
+                title: 'Gagal',
+                text: 'Terjadi kesalahan saat menambahkan data sewa',
+                icon: 'error',
+            });
+        })
+    })
+}    
 
 // Kode alert untuk operasi edit data 
 if (document.getElementById('sepedaMotorUpdateForm')) {
