@@ -1,20 +1,13 @@
 <?php
-include('./config/connection.php');
+include('./controllers/function.php');
 
 // Ambil ID sewa dari query string
 $idSewa = isset($_GET['id_sewa']) ? intval($_GET['id_sewa']) : 0;
 
-// Mendapatkan detail sewa dari database
-$queryGetSewaDetail = "SELECT s.*, m.no_polisi, m.merk, m.kategori, p.nama_penyewa, p.no_telepon, p.alamat
-                        FROM sewa s
-                        JOIN motor m ON s.motor_id = m.id_motor
-                        JOIN penyewa p ON s.penyewa_id = p.id_penyewa
-                        WHERE s.id_sewa = $idSewa";
+$sewaDetail = getSewaDetail($idSewa);
 
-$resultGetSewaDetail = mysqli_query($connection, $queryGetSewaDetail);
-
-if ($resultGetSewaDetail) {
-    $dataSewa = mysqli_fetch_assoc($resultGetSewaDetail);
+if ($sewaDetail) {
+    $dataSewa = mysqli_fetch_assoc($sewaDetail);
 } else {
     die("Error: " . mysqli_error($connection));
 }
