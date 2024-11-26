@@ -50,8 +50,6 @@ $sewaData = getSewaData($connection);
                             <th>Tanggal Sewa</th>
                             <th>Merk Motor</th>
                             <th>Nama Penyewa</th>
-                            <th>Nama Karyawan</th>
-                            <th>Lama Sewa</th>
                             <th>Harga Sewa</th>
                             <th class="text-center">Aksi</th>
                         </thead>
@@ -72,12 +70,6 @@ $sewaData = getSewaData($connection);
                                     <?= $row['nama_penyewa']; ?>
                                 </td>
                                 <td class="text-dark">
-                                    <?= $row['nama_karyawan']; ?>
-                                </td>
-                                <td class="text-dark">
-                                    <?= $row['lama_sewa']; ?>
-                                </td>
-                                <td class="text-dark">
                                     <?= $row['harga_sewa']; ?>
                                 </td>
                                 <td class="text-center">
@@ -85,10 +77,10 @@ $sewaData = getSewaData($connection);
                                         <a href="?page=sewaDetail&id_sewa=<?= $row['id_sewa']; ?>" class="btn btn-outline-info btn-sm d-inline-flex" data-bs-toggle="tooltip" data-bs-title="Detail" aria-label="Detail">
                                             <iconify-icon icon="tabler:info-square" class="fs-5"></iconify-icon>
                                         </a>
-                                        <a href="?page=sewaUpdate&id_sewa=<?= $row['id_sewa']; ?>" class="d-inline-flex btn btn-sm btn-outline-warning edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                        <a href="?page=sewaUpdate&id_sewa=<?= $row['id_sewa']; ?>" class="d-inline-flex mx-1 btn btn-sm btn-outline-warning edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                                             <iconify-icon icon="tabler:edit" class="fs-5"></iconify-icon>
                                         </a>
-                                        <a href="#" id="deleteButtonSewa" onclick="confirmDelete('<?= $row['id_sewa']; ?>')" class="d-inline-flex btn btn-sm btn-outline-danger delete ms-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
+                                        <a href="#" id="deleteButtonSewa" onclick="confirmDelete('<?= $row['id_sewa']; ?>')" class="d-inline-flex btn btn-sm btn-outline-danger delete" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <iconify-icon icon="tabler:trash" class="fs-5"></iconify-icon>
                                         </a>
                                     </div>
