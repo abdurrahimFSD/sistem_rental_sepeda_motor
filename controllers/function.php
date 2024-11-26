@@ -231,4 +231,16 @@ function sewaCreate($data) {
         return 'error';
     }
 }
+
+// Function getSewaDetail untuk mengambil data detail sewa berdasarkan id sewa
+function getSewaDetail($idSewa) {
+    global $connection;
+
+    $queryGetSewaDetail = "SELECT s.*, m.no_polisi, m.merk, m.kategori, p.nama_penyewa, p.no_telepon, p.alamat
+                        FROM sewa s
+                        JOIN motor m ON s.motor_id = m.id_motor
+                        JOIN penyewa p ON s.penyewa_id = p.id_penyewa
+                        WHERE s.id_sewa = $idSewa";
+    return mysqli_query($connection, $queryGetSewaDetail);
+}
 ?>
