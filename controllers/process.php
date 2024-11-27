@@ -64,7 +64,17 @@ if (isset($_POST['simpan'])) {
         } elseif ($result == 'error') {
             echo 'errorSewaCreate';
         }
-    }    
+    } elseif ($_POST['simpan'] == 'sewaUpdate') {
+        // Memanggil function sewaUpdate
+        $result = sewaUpdate($_POST);
+
+        // Jika proses berhasil
+        if ($result == 'success') {
+            echo 'successSewaUpdate';
+        } elseif ($result == 'error') {
+            echo 'errorSewaUpdate';
+        }
+    }   
 }
 
 // Mengecek apakah parameter 'id_motor' ada di URL
