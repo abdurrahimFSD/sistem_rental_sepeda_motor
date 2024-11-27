@@ -219,6 +219,42 @@ if (document.getElementById('sepedaMotorUpdateForm')) {
             }
         })
     })
+} else if (document.getElementById('sewaUpdateForm')) {
+    document.getElementById('sewaUpdateForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: 'Apakah anda ingin menyimpan perubahan ini?',
+            showCancelButton: true,
+            confirmButtonText: 'Simpan',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.getElementById('sewaUpdateForm');
+                const formData = new FormData(form);
+
+                fetch('./controllers/process.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(response => {
+                    if (response === 'successSewaUpdate') {
+                        Swal.fire('Tersimpan', '', 'success').then(() => {
+                            window.location.href = './index.php?page=sewaData';
+                        });
+                    } else if (response === 'errorSewaUpdate') {
+                        Swal.fire('Gagal', '', 'error');
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Gagal', 'Terjadi kesalahan saat menyimpan perubahan', 'error');
+                }) 
+            } else if (result.isDismissed) {
+                Swal.fire('Perubahan dibatalkan', '', 'info');
+            }
+        })
+    })
 }
 
 // Kode alert untuk operasi hapus data 
