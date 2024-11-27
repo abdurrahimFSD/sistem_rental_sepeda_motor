@@ -243,4 +243,28 @@ function getSewaDetail($idSewa) {
                         WHERE s.id_sewa = $idSewa";
     return mysqli_query($connection, $queryGetSewaDetail);
 }
+
+// Function sewaUpdate untuk mengupdate data sewa
+function sewaUpdate($data) {
+    global $connection;
+
+    // Mengambil data sewa dari array $data
+    $idSewa = $data['idSewa'];
+    $tanggalSewa = $data['tanggalSewa'];
+    $merkMotor = $data['merkMotor'];
+    $namaPenyewa = $data['namaPenyewa'];
+    $namaKaryawan = $data['namaKaryawan'];
+    $lamaSewa = $data['lamaSewa'];
+    $hargaSewa = $data['hargaSewa'];
+
+    // Menyiapkan query untuk memperbarui data sewa
+    $querySewaUpdate = "UPDATE sewa SET tanggal_sewa = '$tanggalSewa', motor_id = '$merkMotor', penyewa_id = '$namaPenyewa', nama_karyawan = '$namaKaryawan', lama_sewa = '$lamaSewa', harga_sewa = '$hargaSewa' WHERE id_sewa = '$idSewa'";
+    $resultSewaUpdate = mysqli_query($connection, $querySewaUpdate);
+
+    if ($resultSewaUpdate) {
+        return 'success';
+    } else {
+        return 'error';
+    }
+}
 ?>
