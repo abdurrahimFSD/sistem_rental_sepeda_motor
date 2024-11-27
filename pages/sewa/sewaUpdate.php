@@ -52,7 +52,7 @@ if (isset($_GET['id_sewa'])) {
             <div class="card card-body">
                 <h4 class="card-title">Masukkan Data Sewa</h4>
                 <hr class="mb-4">
-                <form id="sewaCreateForm">
+                <form id="sewaUpdateForm">
                     <input type="hidden" name="idSewa" value="<?= $dataSewa['id_sewa'] ?>">
                     <div class="mb-3">
                         <label for="tanggalSewa" class="form-label">Tanggal sewa</label>
