@@ -267,4 +267,18 @@ function sewaUpdate($data) {
         return 'error';
     }
 }
+
+// Function sewaDelete untuk menghapus data sewa
+function sewaDelete($idSewa) {
+    global $connection;
+
+    $querySewaDelete = "DELETE FROM sewa WHERE id_sewa = '$idSewa'";
+    $resultSewaDelete = mysqli_query($connection, $querySewaDelete);
+
+    if ($resultSewaDelete) {
+        return 'success';
+    } else {
+        return 'error';
+    }
+}
 ?>
