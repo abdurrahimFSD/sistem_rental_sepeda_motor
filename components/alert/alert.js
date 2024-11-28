@@ -318,4 +318,34 @@ if (document.getElementById('deleteButtonSepedaMotor')) {
             }
         })
     }
+} else if (document.getElementById('deleteButtonSewa')) {
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Hapus',
+            text: 'Apakah anda yakin menghapus data ini',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, hapus",
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`./controllers/process.php?id_sewa=${id}`)
+                .then(response => response.text())
+                .then(response => {
+                    if (response === 'successSewaDelete') {
+                        Swal.fire('Dihapus', 'Data sewa berhasil dihapus', 'success').then(() => {
+                            window.location.reload();   // Refresh halaman untuk memperbarui tampilan
+                        })
+                    } else if (response === 'errorSewaDelete') {
+                        Swal.fire('Gagal', 'Data sewa gagal dihapus', 'error');
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Gagal', 'Terjadi kesalahan', 'error');
+                }); 
+            }
+        })
+    }
 }
