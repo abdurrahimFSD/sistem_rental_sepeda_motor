@@ -281,4 +281,20 @@ function sewaDelete($idSewa) {
         return 'error';
     }
 }
+
+// Function getTotalSewa untuk menghitung total sewa
+function getTotalSewa() {
+    global $connection;
+
+    // Query sql untuk mendapatkan total sewa
+    $queryGetTotalSewa = "SELECT COUNT(*) as total_sewa FROM sewa";
+    $resultGetTotalSewa = mysqli_query($connection, $queryGetTotalSewa);
+
+    if ($resultGetTotalSewa) {
+        $data = mysqli_fetch_assoc($resultGetTotalSewa);
+        return $data['total_sewa'];
+    } else {
+        die("Error: " . mysqli_error($connection));
+    }
+}
 ?>
