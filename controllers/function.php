@@ -297,4 +297,20 @@ function getTotalSewa() {
         die("Error: " . mysqli_error($connection));
     }
 }
+
+// Function getTotalPenyewa untuk menghitung total penyewa
+function getTotalPenyewa() {
+    global $connection;
+
+    // Query sql untuk mendapatkan total penyewa
+    $queryGetTotalPenyewa = "SELECT COUNT(*) as total_penyewa FROM penyewa";
+    $resultGetTotalPenyewa = mysqli_query($connection, $queryGetTotalPenyewa);
+
+    if ($resultGetTotalPenyewa) {
+        $data = mysqli_fetch_assoc($resultGetTotalPenyewa);
+        return $data['total_penyewa'];
+    } else {
+        die("Error: " . mysqli_error($connection));
+    }
+}
 ?>
