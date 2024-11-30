@@ -3,6 +3,9 @@ include('./controllers/function.php');
 
 // Mendapatkan total sewa
 $totalSewa = getTotalSewa();
+
+// Mendapatkan total penyewa
+$totalPenyewa = getTotalPenyewa();
 ?>
 
 <!-- Start Body Wrapper -->
@@ -54,7 +57,7 @@ $totalSewa = getTotalSewa();
                             </div>
                             <div class="align-self-center">
                                 <h4 class="card-title mb-1">
-
+                                    <?= $totalPenyewa; ?>
                                 </h4>
                                 <p class="card-subtitle">Total Penyewa</p>
                             </div>
